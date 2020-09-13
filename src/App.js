@@ -46,6 +46,19 @@ class App extends Component {
   };
 
   handleDecrementQuantity = (id) => {
+    this.setState((state) => {
+      const filteredArray = state.products.filter((product) => {
+        if (product.id === id) {
+          return false;
+        } else {
+          return true;
+        }
+      });
+
+      return {
+        products: filteredArray,
+      };
+    });
     // Your Code Here!
     // Do the same as handleIncrementQuantity, but decrement it instead
     // Remember that you should not decrement below zero!
@@ -67,7 +80,10 @@ class App extends Component {
         <ul className="list">
           {this.state.cart.map((item) => (
             <li key={item.id}>
-              <Product your props here />
+              <Product
+                product={product}
+                onDeleteProduct={this.handleDecrementQuantity}
+              />
             </li>
           ))}
         </ul>
