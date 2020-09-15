@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Product from "./components/Product";
 import shortid from "shortid";
-
 import "./App.css";
 
 class App extends Component {
@@ -28,6 +27,9 @@ class App extends Component {
     ],
     isOnMailingList: false,
   };
+  // list = cart.map((item) => {
+  //   return `<li key=${cart.id}>${cart.name}</li>`;
+  // });
 
   handleIncrementQuantity = (id) => {
     this.setState((state) => {
@@ -81,7 +83,7 @@ class App extends Component {
           {this.state.cart.map((item) => (
             <li key={item.id}>
               <Product
-                product={product}
+                product={item}
                 onDeleteProduct={this.handleDecrementQuantity}
               />
             </li>
